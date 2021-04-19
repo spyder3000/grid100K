@@ -1,0 +1,41 @@
+// Big Button at top
+.big-button {
+    background: $purple; 
+    border: none; 
+    border-bottom: .6rem solid darken($purple, 10%);    // SCSS function;  2 args - color, & % darken it by;  lighten() is similar 
+    color: white; 
+    font-weight: bold; 
+    font-size: $l-size; 
+    margin-bottom: $m-size;     // default for mobile;  
+    padding: 2.4rem; 
+    width: 100%; 
+}
+
+.big-button:disabled {
+    opacity: .5;   // makes it appear faded out;  
+}
+
+// @media is a css feature;  > 45rem width, use this style for Non-Mobile
+@media (min-width: $desktop-breakpoint) {   // e.g. 45rem;  
+    .big-button { 
+        margin-bottom: $xl-size;   // extra margin on desktop 
+    }
+}
+
+// Button
+.button {
+    background: $purple; 
+    border: none; 
+    border-bottom: .3rem solid darken($purple, 10%); 
+    color: white; 
+    font-weight: 500; 
+    padding: $s-size; 
+}
+
+// bem (modifier);  usual syntax is 2 dashes 
+.button--link {
+    background: none;
+    border: none; 
+    color: $off-white; 
+    padding: 0; 
+}

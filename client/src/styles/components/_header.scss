@@ -1,0 +1,26 @@
+.header {
+    background: $off-black; 
+    margin-bottom: $m-size;
+    padding: $m-size 0; 
+    color: white; 
+}
+
+// BEM naming convention (Block Element modifier) 
+.header__title {
+    font-size: $l-size;
+    margin: 0; 
+}
+
+.header__subtitle {
+    color: $off-white; 
+    font-size: $m-size; 
+    font-weight: 500; 
+    margin: 0; 
+}
+
+// @media is a css feature;  > 45rem width, use this style for Non-Mobile
+@media (min-width: $desktop-breakpoint) {   // e.g. 45rem;  
+    .header { 
+        margin-bottom: $xl-size;   // extra margin on desktop 
+    }
+}

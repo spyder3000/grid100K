@@ -1,0 +1,33 @@
+.add-option-error {
+    color: $off-white;
+    font-style: italic;
+    margin: $m-size 0 0 0; 
+    padding: 0 $m-size;
+}
+
+.add-option {
+    display: flex;
+    flex-direction: column;   // row is default [stack left to right];  column is top to bottom
+    padding: $m-size;
+}
+
+.add-option__input {
+    background: $dark-blue;
+    border: none;
+    border-bottom: .3rem solid darken($dark-blue, 10%); 
+    color: $off-white; 
+    flex-grow: 1;   // want input element to take up remaining space in row for flex;  input will shrink/increase as window size changes
+    margin: 0 0 $s-size 0;   //  margin-right: $s-size;
+    padding: $s-size;
+}
+
+// @media is a css feature;  > 45rem width, use this style for Non-Mobile
+@media (min-width: $desktop-breakpoint) {   // e.g. 45rem;  
+    .add-option { 
+        flex-direction: row;   // row is default [stack left to right] 
+    }
+    .add-option__input {
+        margin: 0 $s-size 0 0;    // styling for left-right (for larger than mobile) 
+    }
+}
+
