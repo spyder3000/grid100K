@@ -1,0 +1,80 @@
+// Row 1 of Filter options 
+div.row1 {
+    display: flex;
+    margin: 1rem 1rem; 
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+}
+
+div.row1a, div.row1b { 
+    margin-left: 1rem; 
+    margin-right: 1rem; 
+}
+
+div.row1b { 
+    display: inline-flex; 
+    margin-top: 0.3rem; 
+    margin-left: 10rem; 
+}
+
+div.row1b_item2 {
+    margin-top: .3rem; 
+    margin-left: 2rem;
+}
+
+span.tot_pages {
+    font-size: 1.2rem; 
+    color: #999; 
+}
+
+// Row 2 of Filter options 
+div.row2 {
+    display: flex;
+    margin: 1rem 1rem; 
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+}
+
+div.row2a, div.row2b {
+    display: inline-flex;
+    margin: 1rem 1rem; 
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+}
+
+label.row_label {
+    color: navy;
+    margin: 0 0.5rem 0 1.5rem; 
+}
+
+// Search Button 
+.button_ok {
+    background: #333; 
+    border: 1px solid#333; 
+    border-bottom: .3rem solid darken(black, 10%); 
+    color: white; 
+    font-weight: 500; 
+    padding: 0.5rem; 
+    margin-left: 1rem;
+    border-radius: 5px; 
+}
+// Arrow buttons 
+button.button_dir {
+    background: #999; 
+    border: 1px solid#333; 
+    border-bottom: .3rem solid darken(black, 10%); 
+    color: white; 
+    font-weight: 500; 
+    padding: 0.3rem 0.5rem; 
+    margin: 0 1rem;
+    border-radius: 5px; 
+}
+
+// Prevents row 2 from fragmenting when reducing to mobile size 
+// @media is a css feature;  > 45rem width, use this style for Non-Mobile
+@media (max-width: $desktop-breakpoint) {   // e.g. 45rem;  
+    label.row_label {
+        color: navy;
+        margin: 0 0.2rem 0 0.7rem; 
+    }
+}

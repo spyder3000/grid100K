@@ -9,18 +9,28 @@
 .header__title {
     font-size: $l-size;
     margin: 0; 
+    text-align: center; 
+    margin-right: 10%; 
 }
 
 .header__subtitle {
-    color: $off-white; 
-    font-size: $m-size; 
-    font-weight: 500; 
-    margin: 0; 
+    color: darkblue; 
+    font-size: 2.6rem; 
+    font-weight: 700;
+    text-align: center;                    
+    margin: 2rem 10% 2rem 0; 
+    padding-top: 2rem; 
+}
+
+h2.table-intro {
+    color: maroon; 
+    font-weight: 600; 
+    margin: 1.5rem;
 }
 
 // @media is a css feature;  > 45rem width, use this style for Non-Mobile
 @media (min-width: $desktop-breakpoint) {   // e.g. 45rem;  
     .header { 
-        margin-bottom: $xl-size;   // extra margin on desktop 
+        margin-bottom: $l-size;   // extra margin on desktop 
     }
 }

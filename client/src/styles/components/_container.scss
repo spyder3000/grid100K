@@ -1,5 +1,21 @@
 .container {
-    max-width: 80rem;   // these 2 lines will center the container 
+    max-width: 100rem;   // these 2 lines will center the container 
     margin: 0 auto; 
     padding: 0 $m-size; 
 }
+div.home_page {
+    background-color: #eee; // slategray; 
+    border-radius: 5px; 
+}
+
+.table {
+    width: 100%; 
+    max-width: 100%; 
+    margin-bottom: 20px; 
+    box-sizing: border-box;
+    padding-bottom: 3rem;
+}
+
+table { background-color: transparent; }
+    
+th { text-align: left; }

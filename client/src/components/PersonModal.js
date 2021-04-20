@@ -1,18 +1,23 @@
-import React from 'react';   // need React because all JSX gets converted to React.createElement
+import React from 'react';    
 import Modal from 'react-modal'; 
 
 const PersonModal = (props) => {
   console.log('PersonModal'); 
   console.log(props.selectedPerson); 
-  let ckOpen = props.selectedPerson && props.selectedPerson.hasOwnProperty('id');  
-  return (    // shorthand;  implicit return (removed return { .. } )
-    // props.selectedPerson will be undefined or a string;  can convert to boolean via !! (undefined = false, string = true)
+  let ckOpen = props.selectedPerson && props.selectedPerson.hasOwnProperty('id'); 
+  
+  const customStyles = {
+    overlay: {zIndex: 99999} 
+  }
+
+  return (    // shorthand;  implicit JSX (removed return { .. } )
     <Modal 
       isOpen={ckOpen} 
       contentLabel='Featured Contestant'
       onRequestClose={props.handleClearSelectedPerson}   /* will close Modal if hitting Esc key or clicking outside Modal */
       closeTimeoutMS={200}
       className="modal"
+      style={customStyles} 
     >
 
       {props.selectedPerson && 
@@ -44,7 +49,7 @@ const PersonModal = (props) => {
           </div>
         </div>
       }
-      <button className="button" onClick={props.handleClearSelectedPerson}>Okay</button>  {/* props fn to clear state.selectedOption (close Modal) */}
+      <button className="button_modal" onClick={props.handleClearSelectedPerson}>Okay</button>  {/* props fn to clear state.selectedOption (close Modal) */}
     </Modal>
   )}; 
 

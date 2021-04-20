@@ -1,17 +1,10 @@
 const mongoose = require('mongoose'); 
-const validator = require('validator');  
-//const bcrypt = require('bcryptjs'); 
-// const jwt = require('jsonwebtoken'); 
 
 const personSchema = new mongoose.Schema({
-    id: {
-        type: Number, 
-//        required: true, 
-//        trim: true 
-    }, 
+    id: { type: Number }, 
     age: { type: Number }, 
-    first_name: { type: String}, 
-    last_name: { type: String},
+    first_name: { type: String, trim: true}, 
+    last_name: { type: String, trim: true},
     state: { type: String},
     gender: { type: String},
     score: { type: Number},

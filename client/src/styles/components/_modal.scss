@@ -2,6 +2,10 @@
     opacity: 0;   
 }
 
+.ReactModal__Overlay {
+    z-index: 1000; 
+}
+
 .ReactModalPortal .ReactModal__Overlay   {    // the property we want to transition
     align-items: center;        // another flex-box property
     display: flex; 

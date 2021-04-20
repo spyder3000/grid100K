@@ -1,18 +1,12 @@
 // Export a stateless functional component -- props include  description, amount, createdAt, id
 
 import React from 'react'; 
-import { Link } from 'react-router-dom'; 
 import { connect } from 'react-redux';
 import { selectPerson }  from '../actions/persons';
-// import { removeExpense } from '../actions/expenses'; 
 
-
-
-// include 'dispatch' as a prop in the listing here;  along with id, amount, etc 
+// retrieves exactly one record via API call (for selected Person for Modal);  include 'dispatch' as a prop 
 class PersonListItem extends React.Component {
    loadData (dat) {
-      let qparams = ''; 
-      console.log(dat); 
       fetch('http://localhost:3001/api/persons/' + dat, {
          headers : { 
            'Content-Type': 'application/json',
@@ -20,22 +14,17 @@ class PersonListItem extends React.Component {
       }})
       .then(res => res.json())
       .then((result) => {
-         console.log('API Call return'); 
-         console.log(result); 
-         // this.props.dispatch(resetPersons(result.persons));
          this.props.dispatch(selectPerson(result));
       })
    }
 
    render() {
       return (
-//const PersonListItem = ({ dispatch, id, age, first_name, last_name, state, gender, score, professional }) => (
    <tr>
       <td>{this.props.id}</td>
       <td><button className="fakeButton" 
-               onClick={(e) => {  // will update store with modified value in Select List
-                  // this.setState({ pagenum: newPage})
-                  this.loadData(this.props.id);   // {...this.state, pagenum: newPage});  
+               onClick={(e) => {  
+                  this.loadData(this.props.id);   
                }}
             >
                {this.props.first_name} {this.props.last_name}
@@ -49,11 +38,9 @@ class PersonListItem extends React.Component {
 )
          }}
 
-// export default PersonListItem;  
-
 const mapStateToProps = (state) => {
    return {
-      filters: state.filters,   // will allow PersonListFilters access to Redux Store filters
+      filters: state.filters,    
       persons: state.persons
    }
 }
