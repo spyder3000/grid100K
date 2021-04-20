@@ -9,7 +9,7 @@
 const {MongoClient, ObjectID } = require('mongodb');  // destructured version of prev 3 lines 
 
 // define connection URL - use full IP 127.0.0.1 instead of 'localhost' (the same) because 'localhost' has caused some slowdowns?  
-const connectionURL  = 'mongodb://127.0.0.1:27017';   // connect to localhost in first Terminal tab;  
+const connectionURL  = 'mongodb://127.0.0.1:27017';     
 const databaseName = 'grid_project';
 
 MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {    // 2nd param should always be true; 3rd param is callback
@@ -21,16 +21,6 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
     // mongodb will automatically create a db if doesn't already exist, so don't need to create this elsewhere
     const db = client.db(databaseName);   // client.db returns a db reference
 
-    //Insert a record into collection 'items' -- ch 75
-/*    db.collection('items').insertOne({
-        id: 1, first_name: 'Wynn', last_name: 'McCall', email: 'wmccall0@epa.gov', gender: 'Female', state: 'Florida', job: 'Civil Engineer'  
-    }, (error, result) => {
-        if (error) {
-            return console.log('Unable to insert item'); 
-        }
-        console.log(result.ops);  // displays array w/ 3 properties (name, age, _id)
-    })
-*/
     try {
       db.collection('persons').bulkWrite([
         { insertOne: { "document": { id: 660, age: 60, first_name: "Doll", last_name: "Denzilow", state: "LA", gender: "M", score: 440, professional: "pro", image: "http://dummyimage.com/112x100.png/dddddd/000000", catchphrase: "Secured secondary solution", favorite_movie: "The Amazing Spider-Man 2", job: "Account Coordinator" } } },
@@ -172,7 +162,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
         { insertOne: { "document": { id: 102, age: 57, first_name: "Ariadne", last_name: "Mulderrig", state: "FL", gender: "F", score: 490, professional: "pro", image: "http://dummyimage.com/117x100.png/cc0000/ffffff", catchphrase: "Managed heuristic architecture", favorite_movie: "The Fast and the Furious", job: "Human Resources Assistant I" } } },
         { insertOne: { "document": { id: 393, age: 24, first_name: "Ethelind", last_name: "Nester", state: "IL", gender: "F", score: 500, professional: "pro", image: "http://dummyimage.com/215x100.png/cc0000/ffffff", catchphrase: "Configurable well-modulated support", favorite_movie: "Green Room", job: "Human Resources Assistant II" } } },
         { insertOne: { "document": { id: 401, age: 73, first_name: "Carrie", last_name: "Crockford", state: "CA", gender: "M", score: 480, professional: "pro", image: "http://dummyimage.com/236x100.png/dddddd/000000", catchphrase: "Customer-focused context-sensitive encoding", favorite_movie: "Florence Foster Jenkins", job: "Human Resources Assistant III" } } },
-        { insertOne: { "document": { id: 872, age: 91, first_name: "Dennis", last_name: "Cowden", state: "NY", gender: "F", score: 280, professional: "pro", image: "http://dummyimage.com/131x100.png/5fa2dd/ffffff", catchphrase: "Open-source user-facing pricing structure", favorite_movie: "Predators", job: "Human Resources Assistant III" } } },
+        { insertOne: { "document": { id: 872, age: 93, first_name: "Dennis", last_name: "Cowden", state: "NY", gender: "F", score: 280, professional: "pro", image: "http://dummyimage.com/131x100.png/5fa2dd/ffffff", catchphrase: "Open-source user-facing pricing structure", favorite_movie: "Predators", job: "Human Resources Assistant III" } } },
         { insertOne: { "document": { id: 349, age: 28, first_name: "Lalo", last_name: "Marguerite", state: "NV", gender: "M", score: 445, professional: "pro", image: "http://dummyimage.com/174x100.png/ff4444/ffffff", catchphrase: "Progressive incremental standardization", favorite_movie: "The House (I) ", job: "Internal Auditor" } } },
         { insertOne: { "document": { id: 73, age: 83, first_name: "Sher", last_name: "Sillars", state: "OK", gender: "M", score: 380, professional: "pro", image: "http://dummyimage.com/198x100.png/ff4444/ffffff", catchphrase: "Quality-focused multi-tasking frame", favorite_movie: "Space Odyssey: Voyage to the Planets", job: "Internal Auditor" } } },
         { insertOne: { "document": { id: 172, age: 17, first_name: "Vassili", last_name: "Black", state: "CA", gender: "M", score: 145, professional: "pro", image: "http://dummyimage.com/169x100.png/cc0000/ffffff", catchphrase: "Self-enabling eco-centric model", favorite_movie: "Warcraft: The Beginning", job: "Junior Executive" } } },
@@ -265,7 +255,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
         { insertOne: { "document": { id: 814, age: 23, first_name: "Cairistiona", last_name: "Keuning", state: "OH", gender: "M", score: 395, professional: "pro", image: "http://dummyimage.com/221x100.png/dddddd/000000", catchphrase: "Decentralized context-sensitive initiative", favorite_movie: "The Mortal Instruments: City of Bones ", job: "VP Marketing" } } },
         { insertOne: { "document": { id: 373, age: 73, first_name: "Rolph", last_name: "Rubie", state: "WA", gender: "F", score: 375, professional: "pro", image: "http://dummyimage.com/128x100.png/cc0000/ffffff", catchphrase: "Multi-tiered encompassing synergy", favorite_movie: "Kubo and the Two Strings", job: "VP Marketing" } } },
         { insertOne: { "document": { id: 288, age: 28, first_name: "Christine", last_name: "Childes", state: "NV", gender: "F", score: 245, professional: "pro", image: "http://dummyimage.com/118x100.png/cc0000/ffffff", catchphrase: "Function-based didactic definition", favorite_movie: "Wonder (I) ", job: "VP Marketing" } } },
-        { insertOne: { "document": { id: 54, age: 91, first_name: "Claudio", last_name: "Lynes", state: "DC", gender: "F", score: 345, professional: "pro", image: "http://dummyimage.com/242x100.png/dddddd/000000", catchphrase: "Distributed 3rd generation intranet", favorite_movie: "Tristram Shandy: A Cock and Bull Story", job: "VP Product Management" } } },
+        { insertOne: { "document": { id: 54, age: 92, first_name: "Claudio", last_name: "Lynes", state: "DC", gender: "F", score: 345, professional: "pro", image: "http://dummyimage.com/242x100.png/dddddd/000000", catchphrase: "Distributed 3rd generation intranet", favorite_movie: "Tristram Shandy: A Cock and Bull Story", job: "VP Product Management" } } },
         { insertOne: { "document": { id: 307, age: 55, first_name: "Tamarra", last_name: "McNeice", state: "FL", gender: "F", score: 325, professional: "pro", image: "http://dummyimage.com/218x100.png/cc0000/ffffff", catchphrase: "Future-proofed system-worthy ability", favorite_movie: "The Zookeeper's Wife ", job: "VP Product Management" } } },
         { insertOne: { "document": { id: 324, age: 23, first_name: "Beau", last_name: "Halbord", state: "MN", gender: "M", score: 195, professional: "pro", image: "http://dummyimage.com/241x100.png/5fa2dd/ffffff", catchphrase: "Streamlined encompassing forecast", favorite_movie: "Rough Night ", job: "VP Product Management" } } },
         { insertOne: { "document": { id: 525, age: 64, first_name: "Carroll", last_name: "Tretter", state: "TX", gender: "M", score: 140, professional: "pro", image: "http://dummyimage.com/164x100.png/dddddd/000000", catchphrase: "Enterprise-wide executive forecast", favorite_movie: "Black Mass", job: "VP Product Management" } } },
@@ -330,7 +320,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
         { insertOne: { "document": { id: 64, age: 34, first_name: "Arlyn", last_name: "Waterhous", state: "LA", gender: "F", score: 195, professional: "amateur", image: "http://dummyimage.com/116x100.png/5fa2dd/ffffff", catchphrase: "Inverse uniform array", favorite_movie: "Dylan Dog: Dead of Night", job: "Administrative Officer" } } },
         { insertOne: { "document": { id: 628, age: 47, first_name: "Clari", last_name: "Flipek", state: "IN", gender: "F", score: 155, professional: "amateur", image: "http://dummyimage.com/160x100.png/ff4444/ffffff", catchphrase: "Distributed multi-state pricing structure", favorite_movie: "John Wick", job: "Administrative Officer" } } },
         { insertOne: { "document": { id: 839, age: 29, first_name: "Arnoldo", last_name: "Rauprich", state: "AZ", gender: "M", score: 140, professional: "amateur", image: "http://dummyimage.com/250x100.png/cc0000/ffffff", catchphrase: "Realigned disintermediate orchestration", favorite_movie: "Alice in Wonderland (I)", job: "Administrative Officer" } } },
-        { insertOne: { "document": { id: 889, age: 91, first_name: "Helge", last_name: "Footer", state: "NY", gender: "F", score: 285, professional: "amateur", image: "http://dummyimage.com/103x100.png/cc0000/ffffff", catchphrase: "Persistent coherent array", favorite_movie: "Love & Other Drugs", job: "Analog Circuit Design manager" } } },
+        { insertOne: { "document": { id: 889, age: 92, first_name: "Helge", last_name: "Footer", state: "NY", gender: "F", score: 285, professional: "amateur", image: "http://dummyimage.com/103x100.png/cc0000/ffffff", catchphrase: "Persistent coherent array", favorite_movie: "Love & Other Drugs", job: "Analog Circuit Design manager" } } },
         { insertOne: { "document": { id: 979, age: 22, first_name: "Gusty", last_name: "Barber", state: "FL", gender: "F", score: 225, professional: "amateur", image: "http://dummyimage.com/243x100.png/dddddd/000000", catchphrase: "Adaptive dynamic array", favorite_movie: "Burn After Reading", job: "Analog Circuit Design manager" } } },
         { insertOne: { "document": { id: 315, age: 40, first_name: "Andrea", last_name: "Gledstane", state: "TX", gender: "F", score: 160, professional: "amateur", image: "http://dummyimage.com/163x100.png/ff4444/ffffff", catchphrase: "Customizable asymmetric Graphic Interface", favorite_movie: "Kingsman: The Golden Circle ", job: "Analog Circuit Design manager" } } },
         { insertOne: { "document": { id: 83, age: 38, first_name: "Berry", last_name: "Prantoni", state: "NY", gender: "M", score: 105, professional: "amateur", image: "http://dummyimage.com/195x100.png/ff4444/ffffff", catchphrase: "Switchable disintermediate focus group", favorite_movie: "Looking for Eric", job: "Analog Circuit Design manager" } } },
@@ -1039,26 +1029,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
       print(e);
    }
 
-
-    /* Delete multiple recs based on criteria;  uses Promises --  .then & .catch are Promise functions  */
-    /*db.collection('users').deleteMany({  
-        age: 28
-    }).then((result) => {
-        console.log(result.deletedCount); 
-    }).catch((error) => {
-        console.log(error); 
-    });*/ 
-
-    /* Delete One rec based on criteria */
-    /*db.collection('tasks').deleteOne({
-        _id: new ObjectID("5f0ba0e58e787e1ff4c36c82")
-    }).then((result) => {
-        console.log(result.deletedCount); 
-    }).catch((error) => {
-        console.log(error); 
-    }); */
-
-    /* https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/ */
+/* https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/ */
 /*    db.collection('users').updateOne({
         _id: new ObjectID("5f0b9d4ea7c4372244a74168"), 
     }, {
@@ -1073,48 +1044,6 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
     }).catch((error) => {
         console.log(error); 
     })  */
-
-    /* db.collection('tasks').updateMany({     // update all tasks that are not completed to completed 
-        completed: false, 
-    }, {
-        $set: {  // update operators for updates we want to perform
-            completed: true 
-        }
-    }).then((result) => {
-        console.log(result.modifiedCount); 
-    }).catch((error) => {
-        console.log(error); 
-    })  */
-
-    /* Fetch a single record from db;  if multiple, will select just the first one  */
-    //db.collection('users').findOne({ name: 'Andrew' }, (error, user) => {
-    //db.collection('users').findOne({ name: 'Jen', age: 1 }, (error, user) => {    // returns null 
-    /*db.collection('users').findOne({ _id: new ObjectID("5f0b9d4ea7c4372244a74168")}, (error, user) => {   // _id is an object so needs new ObjectID call
-        if (error) {
-            return console.log('Unable to fetch'); 
-        }
-        console.log(user); 
-    })*/
-
-    // .find returns mult items;  returns a cursor instead of an array;  no callback;  cursor has methods such as count(), limit(), & toArray()
-    /*db.collection('users').find({ name: 'Andrew' }).toArray((error, users) => {
-        console.log(users); 
-    });  
-    db.collection('users').find({ name: 'Andrew' }).count((error, cnt) => {  //cursor allows us to retrieve a count w/out storing all recs 
-        console.log(cnt); 
-    });*/
-
-    /*db.collection('tasks').findOne({ _id: new ObjectID("5f0ba0e58e787e1ff4c36c84") }, (error, task) => {  
-        if (error) {
-            return console.log('Unable to fetch Task'); 
-        }
-        console.log(task); 
-    });
-    
-    db.collection('tasks').find({ completed: false }).toArray((error, tasks) => {
-        console.log(tasks); 
-    });*/  
-
     
 });   
 
