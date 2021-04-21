@@ -9,6 +9,7 @@ const misc = require('./misc');
 // e.g. localhost:3000/persons?limit=50&skip=2    // e.g. skip is # of pages to skip 
 // e.g. localhost:3000/persons?sort=scoredesc  
 router.get('/personsFilter', async (req, res) => {
+    console.log('personsFilter'); 
     const opts = {};    // e.g. gender, state, age, score, & Search Name
     const other = {};       // e.g. Sort options, Page Options
 
