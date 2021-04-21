@@ -8,7 +8,9 @@ require('./db/mongoose')  // will connect to mongoose
 const personRouter = require('./routers/person'); 
 
 const app = express()
-app.use(cors()); 
+if (process.env.NODE_ENV !== 'production') {
+   app.use(cors()); 
+}
 
 // DEfine paths for Express config;  __dirname is path to current directory;  path.join to go up one level & into public dir;  
 // JV   const publicDirectoryPath = path.join(__dirname, '../public');  // this line will match to public files first (e.g. index.html) prior to app.get stmts below  
@@ -26,6 +28,8 @@ app.use(cors());
 // express.json() -- setup express to automatically parse incoming json (e.g. from POST) to an object so we can access in 
 //      our request handlers -- e.g. req.body within  app.post('/users', (req, res) => { ... req.body
 
+const publicPath = path.join(__dirname, '../client/public'); 
+
 // app.use(express.json());    
 app.use('/api/', personRouter);
 // Serve static assets if in Production  
@@ -33,10 +37,11 @@ console.log('process.env.NODE_ENV = ' + process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
    // Set static folder 
 //   app.use(express.static('client/public')); 
-   console.log('path = ' + path.resolve(__dirname, 'client', 'public')); 
-   app.use(express.static(path.resolve(__dirname, 'client', 'public'))); 
+   console.log('path = ' + publicPath);  
+   app.use(express.static(publicPath)); 
    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html')); 
+      console.log('index.html at -- ' + path.join(publicPath, 'index.html')); 
+      res.sendFile(path.join(publicPath, 'index.html')); 
    })
 }
 
