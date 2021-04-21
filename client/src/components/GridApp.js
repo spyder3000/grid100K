@@ -18,8 +18,8 @@ class GridApp extends React.Component {
    // initial populate of Home page grid
    loadData () {
       let qparams = '?sort=idasc&limit=20';     // default params for initial API call
-      // fetch('http://localhost:3001/api/personsFilter' + qparams, {
-      fetch('./api/personFilter' + qparams, {
+      fetch('http://localhost:3001/api/personsFilter' + qparams, {
+      // fetch('./api/personFilter' + qparams, {
          headers : { 
            'Content-Type': 'application/json',
            'Accept': 'application/json'

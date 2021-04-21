@@ -30,7 +30,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 const publicPath = path.join(__dirname, '../client/public'); 
 
+console.log('app.js/routers/person');  
 // app.use(express.json());    
+
 app.use('/api/', personRouter);
 // Serve static assets if in Production  
 console.log('process.env.NODE_ENV = ' + process.env.NODE_ENV); 
