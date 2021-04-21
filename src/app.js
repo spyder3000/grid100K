@@ -32,7 +32,9 @@ app.use('/api/', personRouter);
 console.log('process.env.NODE_ENV = ' + process.env.NODE_ENV); 
 if (process.env.NODE_ENV === 'production') {
    // Set static folder 
-   app.use(express.static('client\public')); 
+//   app.use(express.static('client/public')); 
+   console.log('path = ' + path.resolve(__dirname, 'client', 'public')); 
+   app.use(express.static(path.resolve(__dirname, 'client', 'public'))); 
    app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html')); 
    })
