@@ -2,7 +2,7 @@ const express = require('express');
 const Person = require('../models/person')
 const router = new express.Router();   /* create a Router */
 const validator = require('validator'); 
-const misc = require('./Misc'); 
+const misc = require('./misc'); 
 
 /*  Async -- Send GET data via HTTP request to get all persons based on params (e.g. from Postman)  */
 // e.g. localhost:3000/persons?state=FL;  
