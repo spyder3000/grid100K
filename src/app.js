@@ -24,7 +24,18 @@ app.use(express.static(publicDirectoryPath))   // Setup static directory;  app.u
 /* functions provided by express */
 // express.json() -- setup express to automatically parse incoming json (e.g. from POST) to an object so we can access in 
 //      our request handlers -- e.g. req.body within  app.post('/users', (req, res) => { ... req.body
-app.use(express.json());    
-app.use('/api/', personRouter); 
+
+// app.use(express.json());    
+app.use('/api/', personRouter);
+// Serve static assets if in Production  
+console.log('process.env.NODE_ENV = ' + process.env.NODE_ENV); 
+if (process.env.NODE_ENV === 'production') {
+   // Set static folder 
+   app.use(express.static('client/public')); 
+   app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html')); 
+   })
+}
+app.use('/') 
 
 module.exports = app
