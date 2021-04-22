@@ -27,8 +27,13 @@ class PersonListFilters extends React.Component {
       if (dat.stateXX && dat.stateXX !== 'XX') qparams += '&stateXX=' + dat.stateXX; 
       if (dat.strButtonClick) qparams += '&str=' + dat.text; 
 
-      // console.log('qparams = ' + qparams); 
-      fetch('http://localhost:3001/api/personsFilter' + qparams, {
+   // fetch('http://localhost:3001/api/personsFilter' + qparams, {
+   // fetch('./api/personFilter' + qparams, {
+      console.log('url = ' + window.location.href); 
+      let baseurl = './api/personFilter'; 
+      if (window.location.href.search("//localhost") > -1)   baseurl = 'http://localhost:3001/api/personsFilter'; 
+      console.log('baseurl = ' + baseurl); 
+      fetch(baseurl + qparams, {
          headers : { 
            'Content-Type': 'application/json',
            'Accept': 'application/json'
