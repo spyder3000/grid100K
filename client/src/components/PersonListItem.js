@@ -7,12 +7,8 @@ import { selectPerson }  from '../actions/persons';
 // retrieves exactly one record via API call (for selected Person for Modal);  include 'dispatch' as a prop 
 class PersonListItem extends React.Component {
    loadData (dat) {
-   // fetch('http://localhost:3001/api/persons' + dat, {
-   // fetch('./api/persons' + dat, {
-      console.log('url = ' + window.location.href); 
       let baseurl = './api/persons/'; 
       if (window.location.href.search("//localhost") > -1)   baseurl = 'http://localhost:3001/api/persons/'; 
-      console.log('baseurl = ' + baseurl); 
       fetch(baseurl + dat, {
          headers : { 
            'Content-Type': 'application/json',

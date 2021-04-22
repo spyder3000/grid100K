@@ -2,7 +2,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');  
 
 // ch 133 - convert module.exports from an object to a fn that returns the webpack config object;  
-//             this gives us access to the env;  
+//             this gives us access to the env var;  
 module.exports = (env) => {
     // console.log('env', env); 
     const isProduction = env === 'production';  // from package.json "build:prod": "webpack -p --env production",  (sets env var to production) 
@@ -39,7 +39,7 @@ module.exports = (env) => {
             contentBase: path.join(__dirname, 'public'),   // config Webpack Dev server w/ path to public folder;  
             historyApiFallback: true,     // return this page for all 404 routes;  we want client to handle routing 
             port: 5000 
-//            proxy: { "/api/**": { target: 'http://localhost:3000', secure: false, changeOrigin: true }}
+//            proxy: { "/api/**": { target: 'http://localhost:3001', secure: false, changeOrigin: true }}
         }        
     }
 }

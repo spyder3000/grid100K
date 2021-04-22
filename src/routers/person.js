@@ -5,9 +5,9 @@ const validator = require('validator');
 const misc = require('./misc'); 
 
 /*  Async -- Send GET data via HTTP request to get all persons based on params (e.g. from Postman)  */
-// e.g. localhost:3000/persons?state=FL;  
-// e.g. localhost:3000/persons?limit=50&skip=2    // e.g. skip is # of pages to skip 
-// e.g. localhost:3000/persons?sort=scoredesc  
+// e.g. localhost:3000/personsFilter?state=FL;  
+// e.g. localhost:3000/personsFilter?limit=50&skip=2    // e.g. skip is # of pages to skip 
+// e.g. localhost:3000/personsFilter?sort=scoredesc  
 router.get('/personsFilter', async (req, res) => {
     console.log('routers\person.js'); 
     const opts = {};    // e.g. gender, state, age, score, & Search Name
