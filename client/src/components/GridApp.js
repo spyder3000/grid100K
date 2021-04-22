@@ -21,7 +21,7 @@ class GridApp extends React.Component {
       // fetch('http://localhost:3001/api/personsFilter' + qparams, {
       // fetch('./api/personFilter' + qparams, {
       console.log('url = ' + window.location.href); 
-      let baseurl = 'api/personFilter'; 
+      let baseurl = 'api/personsFilter'; 
       if (window.location.href.search("//localhost") > -1)   baseurl = 'http://localhost:3001/api/personsFilter'; 
       console.log('baseurl = ' + baseurl + qparams); 
       fetch(baseurl + qparams, {
