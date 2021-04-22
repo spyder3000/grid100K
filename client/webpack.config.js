@@ -38,8 +38,8 @@ module.exports = (env) => {
         devServer: {
             contentBase: path.join(__dirname, 'public'),   // config Webpack Dev server w/ path to public folder;  
             historyApiFallback: true,     // return this page for all 404 routes;  we want client to handle routing 
-            port: 5000, 
-            proxy: { "/api/**": { target: 'http://localhost:3000', secure: false, changeOrigin: true }}
+            port: 5000 
+//            proxy: { "/api/**": { target: 'http://localhost:3000', secure: false, changeOrigin: true }}
         }        
     }
 }
