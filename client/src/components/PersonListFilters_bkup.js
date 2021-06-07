@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { connect } from 'react-redux'; 
+import { resetPersons }  from '../actions/persons';
 import { setTextFilter, sortByIdAsc, sortByIdDesc, sortByScoreAsc, sortByScoreDesc, 
          sortByNameAsc, sortByNameDesc, sortByAgeAsc, sortByAgeDesc, 
          sortByGenderAsc, sortByGenderDesc, sortByStateAsc, sortByStateDesc,
@@ -7,16 +8,15 @@ import { setTextFilter, sortByIdAsc, sortByIdDesc, sortByScoreAsc, sortByScoreDe
          setAge, setScore, setGender, setState }  from '../actions/filters';
 
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import Input from '@material-ui/core/Input';
 
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import SearchIcon from '@material-ui/icons/Search';
 
 class PersonListFilters extends React.Component {
    onTextChange = (e) => {
@@ -34,6 +34,7 @@ class PersonListFilters extends React.Component {
       } else if (e.target.value === 'nameasc') {
          this.props.sortByNameAsc();
       } else if (e.target.value === 'namedesc') {
+         console.log('Select sortByNAMEDesc'); 
          this.props.sortByNameDesc();
       } else if (e.target.value === 'ageasc') {
          this.props.sortByAgeAsc();
@@ -63,32 +64,42 @@ class PersonListFilters extends React.Component {
       this.props.setGender(e.target.value);
    };
    onStateChange = (e) => {
+      console.log('onStateChange = ' + e.target.value);
       this.props.setState(e.target.value);
    };
   
    render() {
       return (
          <Container maxWidth="lg" className="filter_grid">
-            <Typography component="h1" variant="h6" color="inherit" noWrap className="filter_title">
-               Search
-            </Typography>
-            <List className="search_section">
-               <ListItem>
-                  <SearchIcon />
-                  <Input id="searchStr2" className="searchStr" placeholder="Enter name" inputProps={{ 'aria-label': 'description' }} 
-                     label="Search" variant="outlined" 
-                     value={this.props.filters.text} 
-                     onChange={this.onTextChange}
-                  />
-               </ListItem>
-            </List>
-
-            <Typography className="filter_title" component="h1" variant="h6" color="inherit" noWrap >
-               Filters
-            </Typography>
+            <Paper className="filter_paper">
             
-            <List className="filter_section">
-               <ListItem>
+               {/*<FormControl className="form_control" variant="outlined">
+                  <InputLabel id="sort_label" className="sort_label">Sort</InputLabel>
+                  <Select
+                     labelId="choose_sort"
+                     label="Sort"
+                     id="choose_sort"
+                     value={this.props.filters.sortBy}
+                     //onChange={(e) => { this.setState({ sortBy: e.target.value})  }}
+                     onChange={this.onSortChange}
+                  >
+                     <MenuItem value={"scoreasc"}>Score (Asc)</MenuItem>
+                     <MenuItem value={"scoredesc"}>Score (Desc)</MenuItem>
+                     <MenuItem value={"nameasc"}>Name (Asc)</MenuItem>
+                     <MenuItem value={"namedesc"}>Name (Desc)</MenuItem>
+                     <MenuItem value={"ageasc"}>Age (Asc)</MenuItem>
+                     <MenuItem value={"agedesc"}>Age (Desc)</MenuItem>
+                     <MenuItem value={"idasc"}>Entry Num (Asc)</MenuItem>
+                     <MenuItem value={"iddesc"}>Entry Num (Desc)</MenuItem>
+                     <MenuItem value={"genderasc"}>Gender (Asc)</MenuItem>
+                     <MenuItem value={"genderdesc"}>Gender (Desc)</MenuItem>
+                     <MenuItem value={"stateasc"}>State (Asc)</MenuItem>
+                     <MenuItem value={"statedesc"}>State (Desc)</MenuItem>
+                     <MenuItem value={"statusasc"}>Status (Asc)</MenuItem>
+                     <MenuItem value={"statusdesc"}>Status (Desc)</MenuItem>
+                  </Select>
+               </FormControl> */}
+
                <FormControl className="form_control" variant="outlined">
                   <InputLabel id="age_label" className="age_label">Age</InputLabel>
                   <Select
@@ -96,6 +107,7 @@ class PersonListFilters extends React.Component {
                      label="Age"
                      id="choose_age"
                      value={this.props.filters.age}
+                     // onChange={(e) => { this.setState({ age: e.target.value})  }}
                      onChange={this.onAgeChange}
                   >
                      <MenuItem value={"0"}>None</MenuItem>
@@ -111,9 +123,7 @@ class PersonListFilters extends React.Component {
                      <MenuItem value={"10"}>91-100</MenuItem>
                   </Select>
                </FormControl>
-               </ListItem>
 
-               <ListItem>
                <FormControl className="form_control" variant="outlined">
                   <InputLabel id="score_label" className="score_label">Score</InputLabel>
                   <Select
@@ -121,6 +131,7 @@ class PersonListFilters extends React.Component {
                      label="Score"
                      id="choose_score"
                      value={this.props.filters.score}
+                     // onChange={(e) => { this.setState({ score: e.target.value})  }}
                      onChange={this.onScoreChange}
                   >
                      <MenuItem value={"0"}>None</MenuItem>
@@ -136,9 +147,7 @@ class PersonListFilters extends React.Component {
                      <MenuItem value={"1"}>0-50</MenuItem>
                   </Select>
                </FormControl>
-               </ListItem>
 
-               <ListItem>
                <FormControl className="form_control" variant="outlined">
                   <InputLabel id="gender_label" className="gender_label">Gender</InputLabel>
                   <Select
@@ -153,9 +162,7 @@ class PersonListFilters extends React.Component {
                      <MenuItem value={"F"}>Female</MenuItem>
                   </Select>
                </FormControl>
-               </ListItem>
 
-               <ListItem>
                <FormControl className="form_control" variant="outlined">
                   <InputLabel id="state_label" className="state_label">State</InputLabel>
                   <Select
@@ -219,9 +226,15 @@ class PersonListFilters extends React.Component {
                         <MenuItem value={"WY"}>WY</MenuItem>
                   </Select>
                </FormControl>
-               </ListItem>
-            </List>
+
+               <Input id="searchStr" className="searchStr" placeholder="Enter name (3+ chars)" label="Search" variant="outlined" 
+                  value={this.props.filters.text} 
+                  onChange={this.onTextChange}
+               />
+
+            </Paper>
          </Container>
+
       )
    }
 }

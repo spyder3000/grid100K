@@ -1,0 +1,28 @@
+.header {
+   background: $off-black; 
+   margin-bottom: $m-size;
+   padding: $m-size 0; 
+   color: white; 
+}
+
+div.header__title {
+   font-size: $l-size;
+   margin: 0; 
+   text-align: center; 
+   margin-right: 10%; 
+}
+
+div.header__subtitle {
+   color: darkblue; 
+   font-size: 2.6rem; 
+   font-weight: 700;
+   text-align: center;                    
+   margin: 2rem 10% 2rem 0; 
+   padding-top: 2rem; 
+}
+
+div.main_grid {
+   justify-content: space-evenly;  
+  // max-width: 900px;  
+}
+

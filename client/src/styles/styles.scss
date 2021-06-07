@@ -1,7 +1,10 @@
 @import './base/settings'; 
 @import './base/base';   // for partial _base.scss, leave off underscore & .scss which leaves just 'base' 
-@import './components/button'; 
-@import './components/container'; 
-@import './components/filters'; 
-@import './components/header'; 
+// @import './components/button'; 
+// @import './components/container'; 
+// @import './components/filters'; 
+// @import './components/header'; 
+@import './components/gridapp'; 
+@import './components/personlist'; 
+@import './components/personlistfilters'; 
 @import './components/modal'; 

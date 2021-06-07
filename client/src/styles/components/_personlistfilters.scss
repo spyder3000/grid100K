@@ -1,0 +1,30 @@
+
+div.filter_grid {
+   margin: $s-size 0;
+   background-color: lightblue;
+   border: 2px solid #333;
+   border-radius: 10px;
+   padding: 0; 
+   
+}
+
+
+h1.filter_title {
+   margin: 0 $s-size 0 $s-size; 
+   color: navy; 
+   padding-top: 2rem; 
+   font-weight: 600;
+}
+
+div.form_control {
+   margin: $s-size 0; 
+   min-width: 13rem; 
+   height: $l-size;
+}
+
+div.searchStr {
+   margin: $s-size; 
+   min-width: 10rem; 
+   height: $l-size;
+}
+

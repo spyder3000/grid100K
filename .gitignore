@@ -2,3 +2,7 @@ node_modules/
 config/
 client/node_modules/
 mongodb2.js 
+client/src/components/styles
+client/src/components/DrawerSection88.js
+client/src/components/PersonList2021.js
+client/src/components/PersonListHeader2021.js

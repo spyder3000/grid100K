@@ -2,8 +2,8 @@ import React from 'react';
 import Modal from 'react-modal'; 
 
 const PersonModal = (props) => {
-  console.log('PersonModal'); 
-  console.log(props.selectedPerson); 
+  // console.log('PersonModal'); 
+  // console.log(props.selectedPerson); 
   let ckOpen = props.selectedPerson && props.selectedPerson.hasOwnProperty('id'); 
   
   const customStyles = {

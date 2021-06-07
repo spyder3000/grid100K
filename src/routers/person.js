@@ -4,10 +4,45 @@ const router = new express.Router();   /* create a Router */
 const validator = require('validator'); 
 const misc = require('./misc'); 
 
+/*  Async -- Send GET data via HTTP request to get all persons  (e.g. from Postman)  */
+// e.g. localhost:3001/api/personsAll?sort=scoredesc ;  
+router.get('/personsAll', async (req, res) => {
+    console.log('routers\person.js -- personsAll'); 
+    const opts = {};    // e.g. gender, state, age, score, & Search Name
+    const other = {};       // e.g. Sort options, Page Options
+
+    other.sort = { id: 1};   // default;  
+    if (req.query.sort)  {
+        if (req.query.sort == 'nameasc') other.sort = { last_name: 1, first_name: 1}; 
+        else if (req.query.sort == 'namedesc') other.sort = { last_name: -1, first_name: -1}; 
+        else if (req.query.sort == 'scoreasc') other.sort = { score: 1, id: 1}; 
+        else if (req.query.sort == 'scoredesc') other.sort = { score: -1, id: 1}; 
+        else if (req.query.sort == 'idasc') other.sort = { id: 1}; 
+        else if (req.query.sort == 'iddesc') other.sort = { id: -1}; 
+        else if (req.query.sort == 'ageasc') other.sort = { age: 1, score: -1, last_name: 1}; 
+        else if (req.query.sort == 'agedesc') other.sort = { age: -1, score: -1, last_name: 1}; 
+    }
+
+    try {
+        const persons = await Person.find(
+            opts, null, other  
+        ).select(    // Person.find() returns promise;  "_id": 0 to exclude _id;  otherwise '1' means to include 
+        {"first_name": 1, "last_name": 1, "state": 1, "id": 1, "age": 1, "gender": 1, "score": 1, "professional": 1, "_id": 1});    
+
+        // console.log('persons.length = ' + persons.length)
+        const dat = { persons }; 
+        dat.tot = await Person.find(opts).countDocuments(); 
+
+        res.status(201).send(dat); 
+    } catch (e) {
+        res.status(400).send();  
+    }
+})
+
 /*  Async -- Send GET data via HTTP request to get all persons based on params (e.g. from Postman)  */
-// e.g. localhost:3000/personsFilter?state=FL;  
-// e.g. localhost:3000/personsFilter?limit=50&skip=2    // e.g. skip is # of pages to skip 
-// e.g. localhost:3000/personsFilter?sort=scoredesc  
+// e.g. localhost:3001/api/personsFilter?state=FL;  
+// e.g. localhost:3001/api/personsFilter?limit=50&skip=2    // e.g. skip is # of pages to skip 
+// e.g. localhost:3001/api/personsFilter?sort=scoredesc  
 router.get('/personsFilter', async (req, res) => {
     console.log('routers\person.js'); 
     const opts = {};    // e.g. gender, state, age, score, & Search Name

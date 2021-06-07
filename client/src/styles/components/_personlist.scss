@@ -1,0 +1,37 @@
+
+div.list_root {
+   width: 100%;
+}
+
+div.list_tableIntro {
+   color: maroon;
+   font-weight: 600; 
+   margin: 1.5rem;
+   font-size: 1.7rem;
+}
+
+div.list_paper {
+     width: 100%; 
+     margin-bottom: 1.5rem;
+     border: 2px solid #333; 
+     border-radius: 15px; 
+}
+div.list_table {
+   min-width: 750px; 
+}
+div.visuallyHidden {
+   border: 0; 
+   clip: rect(0 0 0 0); 
+   height: 1px; 
+   margin: -1px;
+   overflow: hidden; 
+   padding: 0; 
+   position: absolute; 
+   top: 20px; 
+   width: 1px; 
+}
+
+td.col {
+   padding-top: 2px; 
+   padding-bottom: 2px; 
+}

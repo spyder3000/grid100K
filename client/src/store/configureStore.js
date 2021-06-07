@@ -7,7 +7,7 @@ export default() => {
    const store = createStore(
       combineReducers({
          persons: personsReducer,   // sets up persons to be managed by personsReducer; 
-         //filters: filtersReducer 
+         filters: filtersReducer 
       }), 
       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()  // to enable 'Redux' tab of Chrome
    )

@@ -2,6 +2,9 @@
 
 import React from 'react'; 
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 import { selectPerson }  from '../actions/persons';
 
 // retrieves exactly one record via API call (for selected Person for Modal);  include 'dispatch' as a prop 
@@ -22,23 +25,24 @@ class PersonListItem extends React.Component {
 
    render() {
       return (
-   <tr>
-      <td>{this.props.id}</td>
-      <td><button className="fakeButton" 
-               onClick={(e) => {  
-                  this.loadData(this.props.id);   
-               }}
-            >
-               {this.props.first_name} {this.props.last_name}
-            </button></td>
-      <td>{this.props.age}</td>
-      <td>{this.props.gender}</td>
-      <td>{this.props.state}</td>
-      <td>{this.props.professional}</td>
-      <td>{this.props.score}</td>
-   </tr>
-)
-         }}
+            <TableRow>
+               <TableCell align="center" className="col col1">
+                  {this.props.id}
+               </TableCell>
+               <TableCell align="left" className="col col2">
+                  <Button className="fakeButton" href="#text-buttons" color="primary" 
+                     onClick={(e) => { this.loadData(this.props.id);  }}>
+                     {this.props.first_name} {this.props.last_name}
+                  </Button>
+               </TableCell>
+               <TableCell align="center" className="col col3">{this.props.age}</TableCell>
+               <TableCell align="center" className="col col4">{this.props.gender}</TableCell>
+               <TableCell align="center" className="col col5">{this.props.state}</TableCell>
+               <TableCell align="left" className="col col6">{this.props.professional}</TableCell>
+               <TableCell align="right" className="col col7">{this.props.score}</TableCell>
+            </TableRow>  
+  ); 
+}}
 
 const mapStateToProps = (state) => {
    return {
